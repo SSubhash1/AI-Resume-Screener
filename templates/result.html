@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Resume Analysis Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Resume Analysis</h1>
+
+    <p>
+        Resume:
+        <strong>{{ filename }}</strong>
+    </p>
+
+
+    <div class="score-card">
+
+        <h2>Resume Match Score</h2>
+
+        <div class="score">
+            {{ score }}%
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Matched Skills</h2>
+
+        {% if matched_skills %}
+
+            <ul>
+
+                {% for skill in matched_skills %}
+
+                    <li class="matched">
+                        ✓ {{ skill }}
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        {% else %}
+
+            <p>
+                No matching skills found.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Missing Skills</h2>
+
+        {% if missing_skills %}
+
+            <ul>
+
+                {% for skill in missing_skills %}
+
+                    <li class="missing">
+                        ✗ {{ skill }}
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        {% else %}
+
+            <p>
+                No missing skills.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>Recommendation</h2>
+
+        <p>
+            {{ recommendation_message }}
+        </p>
+
+        {% if recommendations %}
+
+            <ul>
+
+                {% for recommendation in recommendations %}
+
+                    <li>
+                        {{ recommendation }}
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        {% endif %}
+
+    </div>
+
+
+    <a href="/" class="back-button">
+        Analyze Another Resume
+    </a>
+
+</div>
+
+</body>
+
+</html>
