@@ -1,0 +1,7 @@
+# Local application data
+/database.db
+/uploads/
+/.venv/
+__pycache__/
+*.py[cod]
+.env
